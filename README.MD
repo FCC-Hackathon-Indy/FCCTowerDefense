@@ -41,13 +41,13 @@ SpriteSheets are typically an image containing 'frames' of a sprite and its vari
 
 Phaser needs to know: 
 
--key: This is what the game references the sprite with basically its calling card
+- key: This is what the game references the sprite with basically its calling card
 
--imageFile: the name of the actual sprite sheet (i.e. spriteSheet.png)
+- imageFile: the name of the actual sprite sheet (i.e. spriteSheet.png)
 
--frameHeight: How tall each Frame is in pixels
+- frameHeight: How tall each Frame is in pixels
 
--frameWidth: How wide each Frame is in pixels
+- frameWidth: How wide each Frame is in pixels
 
 #### SpriteSheet Manifest Example
 ```
