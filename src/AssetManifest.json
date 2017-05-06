@@ -1,8 +1,11 @@
 {
 	"images": [
 		"loader.png",
-		"phaser-logo.jpg"
+		"phaser-logo.jpg",
+		"wood_tileset.png"
 	],
 	"spriteSheets": [],
-	"tileMaps": []
+	"tileMaps": [
+		"level1.json"
+	]
 }
