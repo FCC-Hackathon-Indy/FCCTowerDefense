@@ -15,10 +15,7 @@ For instance, if you want to add any sort of image (for example: grass.png) firs
 So heres what the manifest file looks like before adding the grass.png
 ```
 {
-	"images": [
-		"loader.png",
-		"phaser-logo.jpg"
-	],
+	"images": [],
 	"spriteSheets": [],
 	"tileMaps": []
 }
@@ -29,8 +26,6 @@ now after adding grass.png
 ```
 {
 	"images": [
-		"loader.png",
-		"phaser-logo.jpg",
 		"grass.png"
 	],
 	"spriteSheets": [],
