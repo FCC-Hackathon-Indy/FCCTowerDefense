@@ -1,0 +1,27 @@
+{
+  "name": "fcc-indy-hackathon",
+  "version": "1.0.0",
+  "description": "Project for FCC game hackathon, for the indy group",
+  "main": "game.js",
+  "scripts": {
+    "start": "webpack-dev-server --open --colors --output-public-path=/build/",
+    "webpack": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "FCCTowerDefense"
+  },
+  "author": "FCC Team Indy",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.4.0",
+    "file-loader": "^0.11.1",
+    "glob": "^7.1.1",
+    "json-loader": "^0.5.4",
+    "webpack": "^2.5.0",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
