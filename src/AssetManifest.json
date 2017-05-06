@@ -7,6 +7,7 @@
 	"spriteSheets": [],
 	"tileMaps": [
 		"level1.json",
-		"level 2.json"
+		"level 2.json",
+		"level 3.json"
 	]
 }
