@@ -4,6 +4,7 @@
   "description": "Project for FCC game hackathon, for the indy group",
   "main": "game.js",
   "scripts": {
+    "build": "webpack --config ./webpack.config.js --progress --colors -p",
     "start": "webpack-dev-server --open --colors --output-public-path=/build/",
     "webpack": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
