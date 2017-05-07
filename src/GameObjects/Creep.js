@@ -6,6 +6,7 @@ export default class Creep extends Phaser.Sprite {
 		this.path = path;
 		this.goal = path[1]
 		this.waypointIndex = 1;
+		this.maxhp = health;
 		this.hp = health;
 
 		this.anchor.setTo(0,1);
@@ -13,6 +14,10 @@ export default class Creep extends Phaser.Sprite {
 		this.game.physics.enable(this, Phaser.Physics.ARCADE);
 		this.game.add.existing(this);
 		this.derender();
+	}
+
+	increaseCreepHP(increment) {
+		this.maxhp += increment;
 	}
 
 	addAnimation(key, frameArray) {
@@ -40,9 +45,10 @@ export default class Creep extends Phaser.Sprite {
 
 	spawn() {
 		this.waypointIndex = 0;
-		this.health = 100;
+		this.hp = this.maxhp;
 		this.reset(this.path[0].x, this.path[0].y);
 		this.setGoal(this.getNextWaypoint())
+		console.log(this.hp);
 
 	}
 

@@ -5,6 +5,7 @@ export default class CreepPool extends Phaser.Group {
 		super(game, game.world, poolName);
 		this.game = game;
 		this.path = path;
+		this.max
 
 		if(instanceCount > 0) {
 			for(let c = 0; c < instanceCount; ++c){
@@ -14,6 +15,12 @@ export default class CreepPool extends Phaser.Group {
 		}
 
 		return this;
+	}
+
+	increaseCreepHP(increment) {
+		this.forEachDead( (dead)=>{
+			dead.increaseCreepHP(increment);
+		})
 	}
 
 	spawn() {
