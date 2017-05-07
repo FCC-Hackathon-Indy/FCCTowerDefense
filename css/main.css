@@ -24,4 +24,5 @@ canvas {
     justify-content: flex-end;
     height: 95vh;
     /* margin: 0 auto; */
+    margin-left: 10px;
 }
