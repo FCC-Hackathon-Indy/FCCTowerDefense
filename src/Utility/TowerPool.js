@@ -25,7 +25,6 @@ export default class TowerPool extends Phaser.Group {
 	isAllowed(x, y) {
 		let tileX = (x / 32);
 		let tileY = (y / 32);
-		console.log(this.mapData[tileY][tileX].index)
 		return this.disallowedTiles.indexOf(this.mapData[tileY][tileX].index) === -1;
 	}
 

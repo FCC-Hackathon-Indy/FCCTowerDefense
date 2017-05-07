@@ -5,10 +5,10 @@ export default class Tower extends Phaser.Sprite {
 		super(game, origin.x, origin.y, key, 0);
 		this.closestCreep = null;
 		this.origin = origin;
+		this.anchor.setTo(.25, .5);
 
 		this.game.add.existing(this);
-
-		this.game.time.events.repeat(Phaser.Timer.SECOND, Infinity, this.shootAtCreep.bind(this))
+		this.game.time.events.repeat(Phaser.Timer.SECOND * 1.05, Infinity, this.shootAtCreep.bind(this))
 	}
 
 	shootAtCreep() {
@@ -23,12 +23,14 @@ export default class Tower extends Phaser.Sprite {
 		*/
 
 		if(this.closestCreep) {
-			if(Phaser.Point.distance(this.closestCreep.world, this.closestCreep.goal) >= this.closestCreep.body.velocity.getMagnitude()) {
-				let target = Phaser.Point.add(this.closestCreep.body.velocity, this.closestCreep.world);
-				target.y -= 62;
-				let speed = Phaser.Point.distance(this.world, target);
+			if(Phaser.Point.distance(this.closestCreep, this.world) < 256) {
+				if(Phaser.Point.distance(this.closestCreep.world, this.closestCreep.goal) >= this.closestCreep.body.velocity.getMagnitude()) {
+					let target = Phaser.Point.add(this.closestCreep.body.velocity, this.closestCreep.world);
+					target.y -= 62;
+					let speed = Phaser.Point.distance(this.world, target);
 
-				new Bullet(this.game, this.world, target, speed, this.closestCreep);
+					new Bullet(this.game, this.world, target, speed, this.closestCreep);
+				}
 			}
 		}
 	}

@@ -10,8 +10,6 @@ export default class InitialGameState extends Phaser.State {
 		this.map.layers.map( (layer) => {
 			this.map.createLayer(layer.name).resizeWorld();
 		})
-
-		console.log(this.map.layers[0].data)
 	}
 
 	setUpPool() {
