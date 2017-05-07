@@ -5,7 +5,14 @@
 		"wood_tileset.png",
 		"waterTower.png"
 	],
-	"spriteSheets": [],
+	"spriteSheets": [
+		{
+			"key" : "bad_food",
+			"imageFile" : "bad_food.png",
+			"frameHeight" : 32,
+			"frameWidth" : 32
+		}
+	],
 	"tileMaps": [
 		"level1.json",
 		"level2.json",

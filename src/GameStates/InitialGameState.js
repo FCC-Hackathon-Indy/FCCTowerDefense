@@ -3,7 +3,8 @@ import Creep from '../GameObjects/Creep';
 export default class InitialGameState extends Phaser.State {
 	create() {
 		this.setUpMap();
-		this.creep = new Creep(this.game, 'waterTower', 0, this.getObjectsByType('waypoint'));
+		let path = this.getObjectsByType('waypoint');
+		this.creep = new Creep(this.game, 'bad_food', 0, path);
 		this.creep.spawn();
 	}
 
