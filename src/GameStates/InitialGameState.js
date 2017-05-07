@@ -1,6 +1,5 @@
-import Creep from '../GameObjects/Creep';
 import CreepPool from '../Utility/CreepPool';
-import Tower from '../GameObjects/Tower';
+import TowerPool from '../Utility/TowerPool';
 
 export default class InitialGameState extends Phaser.State {
 
@@ -16,10 +15,12 @@ export default class InitialGameState extends Phaser.State {
 	setUpPool() {
 		let path = this.getObjectsByType('waypoint');
 
-		this.pool = new CreepPool(this.game, 5, 'creepPool', path);
+		this.creepPool = new CreepPool(this.game, 5, 'creepPool', path);
 		this.time.events.repeat(Phaser.Timer.SECOND * 2, Infinity, ()=>{
-			this.pool.spawn();
+			this.creepPool.spawn();
 		})
+
+		this.towerPool = new TowerPool(this.game, 'towerPool');
 	}
 
 	setUpInput() {
@@ -38,17 +39,13 @@ export default class InitialGameState extends Phaser.State {
 		let coords = this.getTileCoords(this.game.input.mousePointer);
 		this.gfx.x = coords.x * 32;
 		this.gfx.y = coords.y * 32;
+
+		this.towerPool.update(this.creepPool);
 	}
 
 	spawnTower(pointer) {
 		let tileCoords = this.getTileCoords(pointer);
-		this.tower = new Tower(
-			this.game, 
-			'waterTower', 
-			{
-				x: tileCoords.x * 32,
-				y: tileCoords.y * 32
-			});
+		this.towerPool.spawn(tileCoords.x * 32, tileCoords.y * 32);
 	}
 
 	drawCursor(x, y) {

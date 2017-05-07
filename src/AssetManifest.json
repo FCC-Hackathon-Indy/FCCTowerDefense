@@ -3,7 +3,8 @@
 		"loader.png",
 		"phaser-logo.jpg",
 		"wood_tileset.png",
-		"waterTower.png"
+		"waterTower.png",
+		"bullet.png"
 	],
 	"spriteSheets": [
 		{
