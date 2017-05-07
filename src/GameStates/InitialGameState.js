@@ -38,6 +38,11 @@ export default class InitialGameState extends Phaser.State {
 		this.setUpInput();
 
 		this.gfx = this.drawCursor(0, 0);
+		
+		this.score = 0;
+    	this.scoreBuffer = 0;
+		
+		this.createScore();
 	}
 
 	update() {
@@ -46,6 +51,11 @@ export default class InitialGameState extends Phaser.State {
 		this.gfx.y = coords.y * 32;
 
 		this.towerPool.update(this.creepPool);
+		
+		if(this.scoreBuffer > 0){
+        	this.incrementScore();
+        	this.scoreBuffer--;
+		};
 	}
 
 	spawnTower(pointer) {
@@ -73,5 +83,37 @@ export default class InitialGameState extends Phaser.State {
 			x: Math.floor(worldCoords.x / 32),
 			y: Math.floor(worldCoords.y / 32)
 		}
+	}
+	
+	createScore() {
+		var scoreFont = "120px Arial";
+		
+		this.scoreLabel = this.scoreLabel.add.text(this.game.world.centerX, 50, "0", {font: scoreFont, fill: "#9332d3", stroke: "#fff", strokeThickness: 15});
+		
+		this.scoreLabel.anchor.setTo(.5, 0);
+		this.scoreLabel.align = 'center';
+		
+		this.scoreLabelTween = this.add.tween(this.scoreLabel.scale).to({ x: 1.5, y: 1.5}, 200, Phaser.Easing.Linear.In).to({ x: 1, y: 1}, 200, Phaser.Easing.Linear.In);
+	}
+	
+	incrementScore() {
+		this.score += 1;
+		this.scoreLabel.text = this.score;
+	}
+	
+	scoreAnimation() {
+		var scoreFont = "80px Arial";
+		
+		var scoreAnimation = this.game.add.text(x, y, message, {font: scoreFont, fill: "#fff600", stroke: "#000", strokeThickness: 15});
+		scoreAnimation.anchor.setTo(.5, 0);
+		scoreAnimation.align = 'center';
+		
+		var scoreTween = this.game.add.tween(scoreAnimation).to({x:this.game.world.centerX, y: 50}, 800, Phaser.Easing.Exponential.In, true);
+		
+		scoreTween.onComplete.add(function(){
+        	scoreAnimation.destroy();
+        	this.scoreLabelTween.start();
+        	this.scoreBuffer += score;
+    	}, me);
 	}
 }
