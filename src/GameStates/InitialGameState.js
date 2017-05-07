@@ -1,11 +1,10 @@
 import Creep from '../GameObjects/Creep';
+import CreepPool from '../Utility/CreepPool';
 
 export default class InitialGameState extends Phaser.State {
 	create() {
 		this.setUpMap();
-		let path = this.getObjectsByType('waypoint');
-		this.creep = new Creep(this.game, 'bad_food', 0, path);
-		this.creep.spawn();
+		this.setUpPool();
 	}
 
 	update() {}
@@ -14,8 +13,18 @@ export default class InitialGameState extends Phaser.State {
 		this.map = this.add.tilemap('level1');
 		this.map.addTilesetImage('wood_tileset');
 
-		this.tileLayer = this.map.createLayer('tilelayer');
-		this.tileLayer.resizeWorld();
+		this.map.layers.map( (layer) => {
+			this.map.createLayer(layer.name).resizeWorld();
+		})
+	}
+
+	setUpPool() {
+		let path = this.getObjectsByType('waypoint');
+
+		this.pool = new CreepPool(this.game, 5, 'creepPool', path);
+		this.time.events.repeat(Phaser.Timer.SECOND * 2, Infinity, ()=>{
+			this.pool.spawn();
+		})
 	}
 
 	getObjectsByType(type) {

@@ -51,7 +51,7 @@ export default class Creep extends Phaser.Sprite {
 			} else {
 				this.body.velocity = 
 					this.getDirection(this.world, this.goal)
-					.setMagnitude(100);
+					.setMagnitude(150);
 			}
 		}
 	}
