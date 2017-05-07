@@ -1,6 +1,7 @@
 var path = require('path')
 var glob = require('glob')
 module.exports = {
+	devtool: 'inline-source-map',
 	entry: ['./src/game.js'],
 	output: {
 		filename: "bundle.js",
