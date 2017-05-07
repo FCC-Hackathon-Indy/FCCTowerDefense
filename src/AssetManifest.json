@@ -2,7 +2,8 @@
 	"images": [
 		"loader.png",
 		"phaser-logo.jpg",
-		"wood_tileset.png"
+		"wood_tileset.png",
+		"waterTower.png"
 	],
 	"spriteSheets": [],
 	"tileMaps": [
