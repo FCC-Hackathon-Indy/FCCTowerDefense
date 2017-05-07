@@ -1,11 +1,12 @@
 export default class Creep extends Phaser.Sprite {
 
-	constructor(game, key, frame, path) {
+	constructor(game, key, frame, path, health) {
 		super(game, path[0].x, path[0].y, key, frame);
 		this.game = game;
 		this.path = path;
 		this.goal = path[1]
 		this.waypointIndex = 1;
+		this.hp = health;
 
 		this.anchor.setTo(0,1);
 
@@ -30,8 +31,16 @@ export default class Creep extends Phaser.Sprite {
 		return this.path[++this.waypointIndex];
 	}
 
+	damage() {
+		this.hp -= 200
+		if(this.hp <= 0) {
+			this.derender();
+		}
+	}
+
 	spawn() {
 		this.waypointIndex = 0;
+		this.health = 100;
 		this.reset(this.path[0].x, this.path[0].y);
 		this.setGoal(this.getNextWaypoint())
 

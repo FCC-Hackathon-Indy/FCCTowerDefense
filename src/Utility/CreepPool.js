@@ -9,7 +9,7 @@ export default class CreepPool extends Phaser.Group {
 		if(instanceCount > 0) {
 			for(let c = 0; c < instanceCount; ++c){
 				let sprite = Math.floor(Math.random() * 9);
-				this.add(new Creep(this.game, 'bad_food', sprite, this.path));
+				this.add(new Creep(this.game, 'bad_food', sprite, this.path, 1000));
 			}
 		}
 
@@ -20,7 +20,7 @@ export default class CreepPool extends Phaser.Group {
 		let creep = this.getFirstExists(false);
 		if(!creep) {
 			let sprite = Math.floor(Math.random() * 9);
-			creep = new Creep(this.game, 'bad_food', sprite, this.path);
+			creep = new Creep(this.game, 'bad_food', sprite, this.path, 1000);
 			this.add(creep);
 		}
 
