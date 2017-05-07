@@ -10,6 +10,8 @@ export default class InitialGameState extends Phaser.State {
 		this.map.layers.map( (layer) => {
 			this.map.createLayer(layer.name).resizeWorld();
 		})
+
+		console.log(this.map.layers[0].data)
 	}
 
 	setUpPool() {
@@ -20,7 +22,8 @@ export default class InitialGameState extends Phaser.State {
 			this.creepPool.spawn();
 		})
 
-		this.towerPool = new TowerPool(this.game, 'towerPool');
+		let disallowedTiles = [4, 20, 36, 5, 35, 19, 21, 23, 8, 40, 38, 6, 7, 24, 39, 22];
+		this.towerPool = new TowerPool(this.game, 'towerPool', this.map.layers[0].data, disallowedTiles);
 	}
 
 	setUpInput() {
