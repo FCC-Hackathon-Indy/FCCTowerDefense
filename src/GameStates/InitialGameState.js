@@ -21,7 +21,7 @@ export default class InitialGameState extends Phaser.State {
 		})
 
 		this.time.events.repeat(Phaser.Timer.SECOND, Infinity, ()=>{
-			this.creepPool.increaseCreepHP(1000);
+			this.creepPool.increaseCreepHP(100);
 		})
 
 		let disallowedTiles = [4, 20, 36, 5, 35, 19, 21, 23, 8, 40, 38, 6, 7, 24, 39, 22];
