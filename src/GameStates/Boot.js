@@ -6,6 +6,7 @@ export default class Boot extends Phaser.State {
 
 	create() {
 		this.input.maxPointers = 1;
+		this.game.input.mouse.capture = true;
 		this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
 		this.game.state.start('Preloader', true, false);
 	}
