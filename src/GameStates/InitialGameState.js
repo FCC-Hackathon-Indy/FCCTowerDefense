@@ -88,7 +88,7 @@ export default class InitialGameState extends Phaser.State {
 	createScore() {
 		var scoreFont = "120px Arial";
 		
-		this.scoreLabel = this.scoreLabel.add.text(this.game.world.centerX, 50, "0", {font: scoreFont, fill: "#9332d3", stroke: "#fff", strokeThickness: 15});
+		this.scoreLabel = this.game.add.text(this.game.world.centerX, 50, "0", {font: scoreFont, fill: "#9332d3", stroke: "#fff", strokeThickness: 15});
 		
 		this.scoreLabel.anchor.setTo(.5, 0);
 		this.scoreLabel.align = 'center';
@@ -114,6 +114,6 @@ export default class InitialGameState extends Phaser.State {
         	scoreAnimation.destroy();
         	this.scoreLabelTween.start();
         	this.scoreBuffer += score;
-    	}, me);
+    	}, this);
 	}
 }
